@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>من نحن - تحميل فيديوهات يوتيوب</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- القائمة العلوية -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="شعار الموقع" width="200">
+            </a>
+            <div class="nav-links">
+                <a href="/" class="nav-link">الرئيسية</a>
+                <a href="/about" class="nav-link active">من نحن</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="about-card">
+            <div class="about-content">
+                <h1>مرحباً بكم في موقع ybdweb.site</h1>
+                <p>نحن نقدم خدمة مميزة لتحميل فيديوهات يوتيوب بجودة عالية وبشكل مجاني تماماً.</p>
+                
+                <h2>مميزات الموقع</h2>
+                <ul class="features-list">
+                    <!-- واجهة سهلة الاستخدام -->
+                    <li>
+                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" 
+                                  stroke-width="2" 
+                                  stroke-linecap="round"/>
+                        </svg>
+                        <span class="feature-text">واجهة سهلة الاستخدام</span>
+                    </li>
+
+                    <!-- تحميل مجاني بالكامل -->
+                    <li>
+                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" 
+                                  stroke-width="2" 
+                                  stroke-linecap="round" 
+                                  stroke-linejoin="round"/>
+                        </svg>
+                        <span class="feature-text">تحميل مجاني بالكامل</span>
+                    </li>
+
+                    <!-- سرعة في التحميل -->
+                    <li>
+                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M13 10V3L4 14h7v7l9-11h-7z" 
+                                  stroke-width="2" 
+                                  stroke-linecap="round" 
+                                  stroke-linejoin="round"/>
+                        </svg>
+                        <span class="feature-text">سرعة في التحميل</span>
+                    </li>
+
+                    <!-- دعم جودات مختلفة -->
+                    <li>
+                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M5 3v4M3 5h4M6 17v4M4 19h4m11-16l-4 4m0-4l4 4m-11 3l4 4m-4 0l4-4" 
+                                  stroke-width="2" 
+                                  stroke-linecap="round"/>
+                        </svg>
+                        <span class="feature-text">دعم جودات مختلفة</span>
+                    </li>
+                </ul>
+
+                <h2>تواصل معنا</h2>
+                <div class="contact-info">
+                    <p>البريد الإلكتروني: ybdweb.site@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- تذييل الصفحة -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="/">الرئيسية</a>
+                <a href="/about">من نحن</a>
+            </div>
+            <div class="copyright">
+                جميع الحقوق محفوظة © 2025
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

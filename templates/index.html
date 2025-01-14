@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحميل فيديوهات يوتيوب</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- القائمة العلوية -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="شعار الموقع" width="200">
+            </a>
+            <div class="nav-links">
+                <a href="/" class="nav-link active">الرئيسية</a>
+                <a href="/about" class="nav-link">من نحن</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card main-card">
+            <h1>تحميل فيديوهات يوتيوب</h1>
+            <p class="description">قم بتحميل فيديوهات يوتيوب بجودة عالية مجاناً</p>
+            
+            <form id="download-form" class="download-form">
+                <div class="form-group">
+                    <input type="url" 
+                           id="url" 
+                           name="url" 
+                           placeholder="ضع رابط الفيديو هنا" 
+                           required>
+                </div>
+                <div class="form-group">
+                    <select id="quality" name="quality">
+                        <option value="high">جودة عالية</option>
+                        <option value="low">جودة منخفضة</option>
+                    </select>
+                </div>
+                <button type="submit" class="download-btn">
+                    <span class="btn-text">تحميل الفيديو</span>
+                    <span class="btn-icon">⬇️</span>
+                </button>
+            </form>
+            
+            <div id="loading" class="loading-indicator">
+                <div class="spinner"></div>
+                <span>جاري التحميل...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- تذييل الصفحة -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="/">الرئيسية</a>
+                <a href="/about">من نحن</a>
+            </div>
+            <div class="copyright">
+                جميع الحقوق محفوظة © 2024
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('download-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const loadingIndicator = document.getElementById('loading');
+            const form = this;
+            const formData = new FormData(form);
+            
+            try {
+                loadingIndicator.style.display = 'flex';
+                
+                const response = await fetch('/download', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'حدث خطأ في التحميل');
+                }
+
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = '';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+            } catch (error) {
+                alert(error.message);
+            } finally {
+                loadingIndicator.style.display = 'none';
+                form.reset();
+            }
+        });
+    </script>
+</body>
+</html>
